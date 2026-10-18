@@ -5,14 +5,14 @@
     "source": {
       "repository": "https://github.com/mvschwarz/openrig-world",
       "folder": "rigs/workshop",
-      "requestedRef": "2a5d93c8d8f8aafd5040bea8b74def4cf0f2f0d4",
-      "resolvedCommit": "2a5d93c8d8f8aafd5040bea8b74def4cf0f2f0d4",
-      "canonicalUrl": "https://github.com/mvschwarz/openrig-world/tree/2a5d93c8d8f8aafd5040bea8b74def4cf0f2f0d4/rigs/workshop"
+      "requestedRef": "fa38c9b55e013e600a3472d2f7561df32df79ce8",
+      "resolvedCommit": "fa38c9b55e013e600a3472d2f7561df32df79ce8",
+      "canonicalUrl": "https://github.com/mvschwarz/openrig-world/tree/fa38c9b55e013e600a3472d2f7561df32df79ce8/rigs/workshop"
     },
     "configurationId": "dev.build=claude-code,dev.qa=claude-code,dev.review=claude-code,orch.lead=claude-code",
     "packageDigest": {
       "algorithm": "sha256",
-      "value": "06aa24548eb1dba1482e2ba2c65daaa3ad2509b8a1d6600cf1ec4cb669eb2fca",
+      "value": "e93506f363b94638098ae2508bc17b71961b08e971eb6fe02f5e72a82eb9a3c3",
       "coverage": "openrig.package-digest/v1"
     },
     "assembler": {
@@ -29,11 +29,11 @@
       "source": {
         "repository": "https://github.com/mvschwarz/openrig-world",
         "folder": "rigs/workshop",
-        "requestedRef": "2a5d93c8d8f8aafd5040bea8b74def4cf0f2f0d4",
-        "resolvedCommit": "2a5d93c8d8f8aafd5040bea8b74def4cf0f2f0d4",
-        "canonicalUrl": "https://github.com/mvschwarz/openrig-world/tree/2a5d93c8d8f8aafd5040bea8b74def4cf0f2f0d4/rigs/workshop"
+        "requestedRef": "fa38c9b55e013e600a3472d2f7561df32df79ce8",
+        "resolvedCommit": "fa38c9b55e013e600a3472d2f7561df32df79ce8",
+        "canonicalUrl": "https://github.com/mvschwarz/openrig-world/tree/fa38c9b55e013e600a3472d2f7561df32df79ce8/rigs/workshop"
       },
-      "created_at": "2026-10-17T08:32:44.581Z",
+      "created_at": "2026-10-18T05:51:21.728Z",
       "daemon_version": "0.6.6"
     },
     "integrity": {
