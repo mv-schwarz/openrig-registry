@@ -111,7 +111,7 @@ export function report(results, { log = console.log, summary = process.env.GITHU
   if (summary) {
     const notices = results.filter(result => result.notice).map(({ file, notice }) => ({ file, notice }));
     const advisory = notices.length ? `### Maintainer review: installed-name clashes\n\nThese notices do not fail the job; the maintainer decides whether to list an intentional variant.\n\n\`\`\`json\n${summaryJson(notices)}\n\`\`\`\n\n` : "";
-    fs.appendFileSync(summary, `## Bundle and installed-name checks\n\nSubmission validator: @openrig/cli 0.6.6. Listed entries are fetched at their pins to compare installed rig names. No bundle is installed or launched.\n\n${advisory}${results.length ? "```json\n" + summaryJson(results) + "\n```" : "No submissions or listed entries to check."}\n`);
+    fs.appendFileSync(summary, `## Bundle and installed-name checks\n\nSubmission validator: the published @openrig/cli; its exact version is printed in the workflow log. Listed entries are fetched at their pins to compare installed rig names. No bundle is installed or launched.\n\n${advisory}${results.length ? "```json\n" + summaryJson(results) + "\n```" : "No submissions or listed entries to check."}\n`);
   }
   return results.some(result => result.status !== 0) ? 1 : 0;
 }

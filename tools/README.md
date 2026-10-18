@@ -7,8 +7,8 @@ CLI's read-only check; it does not execute bundle scripts.
 
 | Program | What it does | Where it runs |
 |---|---|---|
-| `registry-check.mjs` | Checks `registry/*.yaml`, each entry's behaviour views, `registry/submissions/`, `status/journeys/` and `status/status.json` | CI on every pull request and push to main |
-| `ci/bundle-check.mjs` | Validates submissions with `rig bundle check <folder> --json` and compares installed rig names with the pinned listed entries | A separate CI job on every pull request and push to main |
+| `registry-check.mjs` | Checks `registry/*.yaml`, each entry's behaviour views, `registry/submissions/`, `status/journeys/` and `status/status.json` | CI on pull requests, pushes to main, weekly and manual runs |
+| `ci/bundle-check.mjs` | Validates submissions with `rig bundle check <folder> --json` and compares installed rig names with the pinned listed entries | A separate job in the same workflow |
 | `status.mjs` | Generates `status/status.json` from run records, or checks that the committed file equals regenerated output | Wherever the run records and their receipts are kept |
 
 ```sh
@@ -19,7 +19,7 @@ node status.mjs generate --records <folder> [--records <folder> ...]
 node status.mjs check --records <folder> [--records <folder> ...]
 ```
 
-The bundle job installs exactly `@openrig/cli@0.6.6` with lifecycle scripts disabled, then runs the checks against
+The bundle job installs `@openrig/cli@latest` with lifecycle scripts disabled and logs `rig --version`, then runs the checks against
 temporary source checkouts. It never installs submitted dependencies, invokes bundle startup actions, or launches a
 daemon or team. The job has a read-only token and checkout does not persist credentials. Source fetches and validator
 processes each have a two-minute timeout; the job is capped at ten minutes. Every submission is checked on each run,
@@ -33,8 +33,10 @@ This does not change installation or runtime behaviour.
 The check has time limits but no repository-size cap: a repository too large for the runner fails at its limits,
 rather than with a named size error.
 
-At each OpenRig release, maintainers must revisit the pinned validator version and the labels synchronized with it.
-Update the pin and its labels through a normal reviewed pull request.
+The workflow also runs every Monday at 06:17 UTC and can be started with **Run workflow** in GitHub Actions.
+It checks every submission and listed pin without needing a pull-request diff; an empty submissions folder is valid.
+Maintainers can find failed runs under **Actions → Registry check**, with findings in the job log and summary.
+These source checks do not refresh dated native-workflow status labels.
 
 Findings and fetch/validator errors fail the job. `not_checked` results remain visible in its JSON summary; a pass
 does not establish README quality, absence of arbitrary secrets, or runtime behaviour. Maintainer review still

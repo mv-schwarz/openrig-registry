@@ -6,6 +6,9 @@ on:
   pull_request:
   push:
     branches: [main]
+  schedule:
+    - cron: '17 6 * * 1' # Mondays at 06:17 UTC
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -44,8 +47,10 @@ jobs:
         with:
           node-version: 22
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Install the published validator (no lifecycle scripts)
-        run: npm install --prefix "$RUNNER_TEMP/bundle-validator" --ignore-scripts --no-audit --no-fund @openrig/cli@0.6.6
+      - name: Install the latest published validator (no lifecycle scripts)
+        run: |
+          npm install --prefix "$RUNNER_TEMP/bundle-validator" --ignore-scripts --no-audit --no-fund @openrig/cli@latest
+          "$RUNNER_TEMP/bundle-validator/node_modules/.bin/rig" --version
       - name: Exercise source validation without installing or launching a bundle
         run: node --test ci/bundle-check.test.mjs
         env:
