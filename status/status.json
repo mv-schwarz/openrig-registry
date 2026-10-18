@@ -1,5 +1,5 @@
 {
-  "bodyDigest": "29fdd64157f0edc85c75713a5c09133014056adab3f3551033242f71374fecdb",
+  "bodyDigest": "aab1be869426b07d2c9a486595902218924016f1287b9e601fcefb8f7ca0b6bc",
   "generated": {
     "by": "openrig-world tools/status.mjs",
     "generatorVersion": 1,
@@ -82,23 +82,7 @@
         },
         "dev.build=claude-code,dev.qa=claude-code,dev.review=codex,orch.lead=codex": {
           "communityReports": 0,
-          "platforms": {
-            "linux-x64": {
-              "date": "2026-10-18",
-              "label": "tested",
-              "openrigVersion": "0.6.11",
-              "packageDigests": [
-                {
-                  "algorithm": "sha256",
-                  "coverage": "openrig.package-digest/v1",
-                  "value": "1fc06f6d017ee4a9b85376f18fcd9d46e1b92aded03d00fe059bf3506d82f6ea"
-                }
-              ],
-              "recordIds": [
-                "workshop-default-linux-20261018"
-              ]
-            }
-          }
+          "platforms": {}
         },
         "dev.build=codex,dev.qa=codex,dev.review=codex,orch.lead=codex": {
           "communityReports": 0,
