@@ -1,7 +1,8 @@
 # Submissions
 
 To submit a rig bundle for openrig.dev/rigs, open a pull request that adds one file here, `<your-team>.yaml`, with
-exactly these three fields:
+exactly these three fields. The repository must be public on GitHub, because the check fetches your ref from it: a local-only or
+private repository can't be checked, so push your team to a public repository first.
 
 ```yaml
 repository: https://github.com/<owner>/<repo>
@@ -10,10 +11,10 @@ ref: main              # a branch, tag or commit
 ```
 
 The registry check accepts it and says "Submission received". The **Bundle and installed-name check** job then fetches that
-ref and runs `rig bundle check` using OpenRig 0.6.6. Its PR annotation and job summary show the resolved commit,
+ref and runs `rig bundle check` using the latest published OpenRig (`@openrig/cli@latest`; the job prints the version it used). Its PR annotation and job summary show the resolved commit,
 findings and checks left unverified. Bundle-validation findings or an unreadable source fail the check. The job does not install
 dependencies from the bundle, run its scripts, or launch its team. To check before submitting, run
-`rig bundle check <folder>` locally.
+`rig bundle check <folder>` locally with a current OpenRig.
 
 The installed `name` in `rig.yaml` should differ from every listed team's; the check reports a clash to the maintainer
 as a notice without failing the job.
